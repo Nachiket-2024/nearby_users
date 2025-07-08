@@ -1,0 +1,18 @@
+# Bytecode
+__pycache__/
+*.pyc
+
+# Conda environment (if saved locally, rare but possible)
+env/
+.conda/
+
+# SQLite DB (local dev only)
+*.sqlite3
+*.db
+
+# Streamlit cache
+.streamlit/
+
+# OS junk
+.DS_Store
+Thumbs.db
