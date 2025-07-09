@@ -1,5 +1,7 @@
 # Nearby Users
 
+![Demo GIF](nearby_users_demo.gif)
+
 A minimal full-stack app to fetch, store, and visualize random user data with geolocation-based nearest user discovery.
 
 ---

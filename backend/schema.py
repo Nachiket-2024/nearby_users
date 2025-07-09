@@ -38,4 +38,4 @@ class UserOut(UserCreate):
 
     # Enables compatibility with SQLAlchemy ORM objects
     class Config:
-        orm_mode = True
+        from_attributes = True

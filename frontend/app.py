@@ -16,10 +16,14 @@ num_users = st.number_input("Number of users to fetch", min_value=1, value=10)
 if st.button("Fetch Users"):
     response = requests.post(f"{API_URL}/fetch-users/", params={"num_users": num_users})
     if response.status_code == 200:
-        run_id = response.json().get("run_id")
-        st.success(f"{num_users} users fetched successfully (Run ID: {run_id})")
+        st.session_state.run_id = response.json().get("run_id")
+        st.session_state.fetch_count = num_users
     else:
         st.error(f"Error: {response.text}")
+
+# Always show the message if present
+if "run_id" in st.session_state:
+    st.success(f"{st.session_state.fetch_count} users fetched successfully (Run ID: {st.session_state.run_id})")
 
 # ---------------------- Get Random User ----------------------
 st.header("Get Random User")
@@ -61,13 +65,13 @@ if "random_user" in st.session_state:
     user = st.session_state.random_user
     nearest = st.session_state.get("nearest_users") or []  # Fallback to empty list
 
-    # Create folium map
-    m = folium.Map(location=[user["latitude"], user["longitude"]], zoom_start=10)
+    # Create folium map with better zoom
+    m = folium.Map(location=[user["latitude"], user["longitude"]], zoom_start=1)
 
-    # Marker for random user
+    # Marker for the random user with name in tooltip
     folium.Marker(
         [user["latitude"], user["longitude"]],
-        tooltip="Random User",
+        tooltip=f"{user['first_name']} {user['last_name']} (Selected User)",
         icon=folium.Icon(color="blue")
     ).add_to(m)
 
