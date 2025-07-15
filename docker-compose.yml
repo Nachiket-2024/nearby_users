@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .  # Root context of your project (where Dockerfile is located)
+      dockerfile: Dockerfile  # Dockerfile for both frontend and backend is in the root directory
+    volumes:
+      - ./backend:/app/backend  # Mount the backend folder to /app/backend inside the container
+      - ./frontend:/app/frontend  # Mount the frontend folder to /app/frontend inside the container
+    ports:
+      - "8000:8000"  # Expose port 8000 for FastAPI
+      - "8501:8501"  # Expose port 8501 for Streamlit
+    environment:
+      - BACKEND_URL=http://localhost:8000  # Using localhost for backend communication
