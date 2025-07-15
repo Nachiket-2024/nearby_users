@@ -29,7 +29,7 @@ This app:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nearby-users.git
+git clone https://github.com/Nachiket-2024/nearby_users.git
 cd nearby-users
 ```
 
@@ -75,5 +75,37 @@ streamlit run app.py
 | POST   | `/fetch-users/`   | Fetch and store N random users         |
 | GET    | `/random-user/`   | Return a random user from the database |
 | GET    | `/nearest-users/` | Return K nearest users to a given user |
+
+---
+
+## Deploying the App
+
+You can deploy this app using Docker on any platform that supports containerized apps.
+
+### Railway
+
+1. **Make your GitHub repository public** (or provide Railway access).
+2. **Connect your GitHub repository** to Railway.
+3. **Choose the Dockerfile option** — Railway will automatically build and deploy the app.
+4. **Configure environment variables** (like database URL or others) if needed, via the Railway dashboard.
+
+---
+
+### Vercel
+
+Vercel is mainly optimized for frontend apps (Next.js, React, etc.), not backend APIs like FastAPI.
+
+For full-stack deployment, **use Railway, Render, or Fly.io**, or you can **host manually on a VPS**.
+
+---
+
+### Render
+
+Render is a cloud platform where you can deploy Dockerized applications like this one. It also supports auto-deployment via GitHub.
+
+1. **Connect your GitHub repository** to Render.
+2. Choose the **Docker** option to deploy.
+3. Render will automatically detect and deploy the application using the provided Dockerfile.
+4. **Set up any necessary environment variables** in the Render dashboard.
 
 ---
