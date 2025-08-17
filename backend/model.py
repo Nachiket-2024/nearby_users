@@ -1,14 +1,27 @@
+# ---------------------------- External Imports ----------------------------
+
 # Import SQLAlchemy column types used for model field definitions
 from sqlalchemy import Column, Integer, String, Float, DateTime
+
+# ---------------------------- Internal Imports ----------------------------
 
 # Import the declarative base class from your local database setup
 # All models will inherit from this Base
 from .database import Base
 
-# SQLAlchemy model that represents a "users" table in the database
+# ---------------------------- Model: User ----------------------------
+
+# SQLAlchemy model representing a "users" table in the database
 class User(Base):
-    # Define the name of the table in the database
+    """
+    Defines the database structure for storing user information.
+    Each instance corresponds to a row in the 'users' table.
+    """
+    
+    # Define the table name in the database
     __tablename__ = "users"
+
+    # ---------------------------- Columns ----------------------------
 
     # Primary key column (auto-incrementing integer)
     id = Column(Integer, primary_key=True, index=True)
